@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            text-align: center
+        }
+        label{
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            color: var(--secondary);
+            
+        }
+        
+        :root {
+            --primary: rgb(4, 16, 31);
+            --secondary: #0e7fc5;
+        }
+        * ::-webkit-scrollbar{
+            display: none;
+        }
+        h1 {
+            font-size: 40px;
+            margin: 60px 30px 0px 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        h1::first-letter{
+            color: var(--secondary);
+        }
+        p {
+            margin: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: rgb(95, 93, 93);
+        }
+
+        caption {
+            margin: 20px 0px;
+            margin-top: 0px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        input[type=number] {
+            width: 250px;
+            height: 40px;
+            margin-bottom: 15px;
+            text-align: center;
+            border: 1.8px solid rgb(158, 158, 158);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        input[type=number]:focus {
+            border: 2px solid var(--primary);
+            outline: none;
+            background-color: #e2f1fb;
+        }
+
+        .btn {
+            background-color: #0f386a;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0px 20px 0px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        input[type=button]:hover {
+            background-color: rgb(2, 13, 26);
+        }
+
+        main {
+            min-height: calc(100vh - 154px);
+        }
+
+        tr {
+            background-color: transparent;
+            border: 1px solid rgb(194, 193, 193);
+
+        }
+
+        th {
+            border-right: 1px solid rgb(194, 193, 193);
+        }
+
+
+
+        nav {
+            background-image: linear-gradient(to left, var(--secondary), var(--primary));
+            width: 100vw;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        nav h2 {
+            text-align: left;
+            color: white;
+            font-family: cursive;
+            padding-left: 10px;
+
+        }
+
+
+
+
+
+
+
+
+
+        th {
+            text-align: left;
+            padding-left: 10px;
+            padding: 10px;
+
+        }
+
+
+
+
+        input[type=reset] {
+            background-color: red;
+            /* background-color: darkgrey; */
+            background-color: #85c5ec;
+
+        }
+
+        input[type=reset]:hover {
+            background-color: #67baee;
+        }
+
+        table {
+            margin: 10px auto;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-spacing: 10px;
+            border-collapse: collapse;
+            margin-top: 0px;
+            margin-bottom: 60px;
+
+
+        }
+
+
+        table td {
+            font-style: normal;
+        }
+
+
+
+        footer {
+            width: 100%;
+            color: white;
+            background-image: linear-gradient(to left, var(--primary), var(--secondary), var(--primary));
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 15px 0px;
+            width: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        footer p {
+            color: white;
+            margin: 0px 10px;
+        }
+
+        i {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 10px 5px 5px 5px;
+        }
+        label div{
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/d813d6fe46.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <h2>Ganpat Hada</h2>
+    </nav>
+    <main>
+        <h1>Cash Register Manager</h1>
+        <p>Enter the bill amount and cash given by customer <br> and know minimum number of notes to be given</p>
+        <form>
+            <label for="cash">Enter Cash <div><input type="number" id="cash" placeholder="Enter Cash here" autofocus></div></label>
+            <label for="input">Enter Bill <div><input type="number" id="input" placeholder="Enter Bill here"></div></label>
+            <input type="button" onclick="check();" value="Check" class="btn">
+            <input type="reset" value="clear" onClick="myClear()" class="btn">
+        </form>
+        <div id="answer">
+            <!-- table here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; copyright 2022 | Ganpat Hada | Cash Register</p>
+        <span>
+            <a href="https://www.linkedin.com/in/ganpat-hada-33abb4227/" target="_blank"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/GanpatHada" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+
+        </span>
+    </footer>
+    <script>
+        function check() {
+            let cash = Math.trunc(document.getElementById("cash").value);
+            let bill = Math.trunc(document.getElementById("input").value);
+            if (!cash) return alert("please enter cash");
+            if (!bill) return alert("please enter bill");
+            if (cash === bill) return alert("cash and bill are equal");
+            let number = cash - bill;
+            if (number < 0) return alert("cash is not enough");
+            let prevtable = document.getElementsByTagName("table");
+            if (prevtable.length > 0) {
+                for (let i = 0; i < prevtable.length; i++) {
+                    prevtable[i].style.display = "none";
+                }
+            }
+            let notes = [
+                { number: 0, type: 2000 },
+                { number: 0, type: 500 },
+                { number: 0, type: 200 },
+                { number: 0, type: 100 },
+                { number: 0, type: 50 },
+                { number: 0, type: 20 },
+                { number: 0, type: 10 },
+                { number: 0, type: 5 },
+                { number: 0, type: 2 },
+                { number: 0, type: 1 },
+            ];
+
+            if (!number) return alert("please enter number");
+            let rem = number;
+            let i = 0;
+            while (i < notes.length) {
+                if (rem >= notes[i].type) {
+                    notes[i].number = Math.trunc(rem / notes[i].type);
+                    if (rem % notes[i].type !== 0) rem = rem % notes[i].type;
+                    else {
+                        rem = 0;
+                        break;
+                    }
+                }
+                i++;
+            }
+            let newnotes = notes.filter(element => element.number > 0);
+            let mytable = document.createElement("table");
+            let mroot = document.createElement("tr");
+            let mchild1 = document.createElement("th");
+            let mchild2 = document.createElement("th");
+            let mchild1text = document.createTextNode("Notes");
+            let mchild2text = document.createTextNode("Number of Notes");
+            mchild1.appendChild(mchild1text);
+            mchild2.appendChild(mchild2text);
+            mroot.appendChild(mchild1);
+            mroot.appendChild(mchild2);
+            mytable.appendChild(mroot);
+            document.getElementById("answer").appendChild(mytable);
+            newnotes.forEach((element) => {
+                var root = document.createElement("tr");
+                var child1 = document.createElement("th");
+                var child2 = document.createElement("td");
+                var child1text = document.createTextNode(element.type + " Rs.");
+                var child2text = document.createTextNode(element.number);
+                child1.appendChild(child1text);
+                child2.appendChild(child2text);
+                root.appendChild(child1);
+                root.appendChild(child2);
+                mytable.appendChild(root);
+
+            })
+            mroot = document.createElement("caption");
+            mchild1text = document.createTextNode("Total : " + number + " Rs.");
+            mroot.appendChild(mchild1text);
+            mytable.appendChild(mroot);
+
+
+        }
+        function myClear() {
+            let prevtable = document.getElementsByTagName("table");
+            if (prevtable.length > 0) {
+                for (let i = 0; i < prevtable.length; i++) {
+                    prevtable[i].style.display = "none";
+                }
+            }
+            document.getElementById("cash").focus();
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
