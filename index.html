@@ -39,6 +39,10 @@
             text-align: center;
             text-transform: capitalize;
         }
+        #message{
+            font-weight: bold;
+            color: red;
+        }
         h1::first-letter{
             color: var(--secondary);
         }
@@ -212,6 +216,7 @@
             <input type="button" onclick="check();" value="Check" class="btn">
             <input type="reset" value="clear" onClick="myClear()" class="btn">
         </form>
+        <P id="message"></P>
         <div id="answer">
             <!-- table here -->
         </div>
@@ -228,14 +233,17 @@
     </footer>
     <script>
         function check() {
+            let message=document.getElementById("message");
+            console.log(message)
             let cash = Math.trunc(document.getElementById("cash").value);
             let bill = Math.trunc(document.getElementById("input").value);
-            if (!cash) return alert("please enter cash");
-            if (!bill) return alert("please enter bill");
-            if (cash === bill) return alert("cash and bill are equal");
+            if (!cash) return message.innerText="Please Enter Cash"
+            if (!bill) return message.innerText="Please Enter Cash"
+            if (cash === bill) return message.innerText="cash and bill are equal";
             let number = cash - bill;
-            if (number < 0) return alert("cash is not enough");
+            if (number < 0) return message.innerText="Cash is not enough"
             let prevtable = document.getElementsByTagName("table");
+            message.innerText="";
             if (prevtable.length > 0) {
                 for (let i = 0; i < prevtable.length; i++) {
                     prevtable[i].style.display = "none";
