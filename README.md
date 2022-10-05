@@ -8,5 +8,5 @@ HTML,CSS,JAVASCRIPT
 
 ### Live Demo
 
-*link 1* https://ganpathada-cash-register.netlify.app
-*link 2* https://ganpathada.github.io/neogcamp-cash-register-minorproject/
+[link 1](https://ganpathada-cash-register.netlify.app)/
+[link 2](https://ganpathada.github.io/neogcamp-cash-register-minorproject/)
