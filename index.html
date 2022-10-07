@@ -232,8 +232,9 @@
             document.querySelectorAll("table").forEach(e=>{
                 e.style.display="none";
             })
-            let cash = Math.trunc(document.getElementById("cash").value);
-            let bill = Math.trunc(document.getElementById("input").value);
+            let cash = Math.trunc(Number(document.getElementById("cash").value));
+            let bill = Math.trunc(Number(document.getElementById("input").value));
+            if(bill<0||cash<0)return message.innerText='amount can not be negative';
             if (!cash) return message.innerText="Please Enter Cash"
             if (!bill) return message.innerText="Please Enter Bill"
             if (cash === bill) return message.innerText="cash and bill are equal";
